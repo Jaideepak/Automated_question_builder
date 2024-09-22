@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://img.freepik.com/premium-vector/abstract-hexagons-technology-concept-background_41814-23.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .login-container {
+            background: rgba(171, 214, 243, 0.8);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 500px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #0f0e0e;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 18px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        input[type="password"] {
+            background-color: rgba(255, 255, 255, 0.8);
+            color:  #333;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-container input[type="password"] {
+            padding-right: 40px;
+        }
+
+        .password-container .toggle-text {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 12px;
+            color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .show-hide {
+            cursor: pointer;
+            float: right;
+            margin-right: 8px;
+            margin-top: -30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Enter Username" required><br>
+
+            <!-- Password field with hide/show option -->
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                <span class="toggle-text" id="toggleText">Show</span>
+            </div>
+
+            <select name="role" required>
+                <option value="">Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="trainer">Trainer</option>
+                <option value="employee">Employee</option>
+                <option value="it_support">IT Support</option>
+            </select>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        const password = document.getElementById("password");
+        const toggleText = document.getElementById("toggleText");
+
+        toggleText.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            toggleText.textContent = toggleText.textContent === 'Show' ? 'Hide' : 'Show';
+        });
+    </script>
+</body>
+
+</html>

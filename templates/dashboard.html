@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Generation</title>
+</head>
+<body>
+    <h1>Question Generation Using T5-Base Model</h1>
+    <form method="POST" action="/dashboard">
+        <label for="article">Input Text/Article:</label><br>
+        <textarea name="article" rows="10" cols="80">{{ article }}</textarea><br><br>
+
+        <label for="num_questions">Number of Questions to Generate:</label><br>
+        <input type="text" name="num_questions" value="{{ num_questions }}"><br><br>
+
+        <button type="submit">Generate Questions</button>
+    </form>
+
+    <h2>Generated Questions:</h2>
+    <pre>{{ generated_questions }}</pre>
+
+    {% if pdf_filename %}
+        <a href="{{ url_for('download_file', filename=pdf_filename) }}">Download PDF</a>
+    {% endif %}
+</body>
+</html>
